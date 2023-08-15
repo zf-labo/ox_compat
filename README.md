@@ -9,5 +9,5 @@ Requirements:
 - ox_lib
 
 Authors:
-- overextended [for ox_lib interfaces & exportHandler function]
-- zf-labo [for the conversion and compatibility resource]
+- (overextended)[https://github.com/overextended] [for ox_lib interfaces & exportHandler function]
+- (zf-labo)[https://github.com/zf-labo] [for the conversion and compatibility resource]
