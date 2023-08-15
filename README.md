@@ -1,5 +1,5 @@
 # ox_compat
-Transform all qb-menus and qb-inputs to ox_lib context & inputs easilly.
+## Transform all qb-menus and qb-inputs to ox_lib context & inputs easilly.
 
 Install:
 1. Add the resource in your resources folder.
