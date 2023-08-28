@@ -38,6 +38,7 @@ end
 exportHandler('ShowInput', function(data)
     local title, rows, options, ids = convert(data)
     local result = lib.inputDialog(title, rows, options)
+    if not result then return nil end
 
     local dialog = {}
     for i = 1, #ids do dialog[ids[i]] = result[i] end
