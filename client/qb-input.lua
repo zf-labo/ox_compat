@@ -17,15 +17,15 @@ local function convert(data)
     }
 
     local new_input = {}
-    new_input.title = data.header or 'Inputs'
+    new_input.title = convertText(data.header) or 'Inputs'
     
     local rows, ids = {}, {}
     for _, input in pairs(data.inputs) do
         rows[#rows+1] = {
             type = typesConvert[input.type] or 'input',
-            label = input.text,
+            label = convertText(input.text),
             required = input.required,
-            default = input.default,
+            default = convertText(input.default),
             password = input.type == 'password',
         }
         ids[#ids+1] = input.name
@@ -38,7 +38,7 @@ end
 exportHandler('ShowInput', function(data)
     local title, rows, options, ids = convert(data)
     local result = lib.inputDialog(title, rows, options)
-    if not result then return nil end
+    if not result then return end
 
     local dialog = {}
     for i = 1, #ids do dialog[ids[i]] = result[i] end

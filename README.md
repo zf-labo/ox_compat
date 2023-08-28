@@ -5,7 +5,9 @@
 **Install:**
 1. Add the resource in your resources folder.
 2. Remove `qb-menu` and `qb-input` from the resources.
-3. Add `ensure ox_compat` after all your resources.
+3. Go in `client/qb-menu.lua` and change `qb-inventory` to you inventory name if it's not `qb-inventory`.
+4. Add `ensure ox_compat` after all your resources.
+5. Restart the server
 
 
 **Requirements:**

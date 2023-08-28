@@ -9,7 +9,7 @@ end
 local function convert(menu)
     local new_context = {}
     new_context.id = menu.id or 'convert_'..math.random(1, 10000)
-    new_context.title = menu.title or 'Options'
+    new_context.title = convertText(menu.title) or 'Options'
     
     local options = {}
     for _,button in pairs(menu) do
@@ -17,13 +17,18 @@ local function convert(menu)
         if isServer then serverEvent = button.params?.event or '' else event = button.params?.event or '' end
         if QBCore.Shared.Items[button.icon] then icon = "qb-inventory/html/images/" .. QBCore.Shared.Items[tostring(button.icon)].image else icon = button.icon end
 
+        local title, description = nil, nil
+        if convertText(button.header) then title = convertText(button.header) description = convertText(button.txt) end
+        if not convertText(button.header) and convertText(button.txt) then title = convertText(button.txt) description = nil end
+        if not convertText(button.header) and not convertText(button.txt) then title = ' ' description = nil end
+
         options[#options+1] = {
-            title = button.header or ' ',
+            title = title,
             disabled = button.isMenuHeader or false,
             onSelect = button.action or nil,
             icon = icon,
             arrow = button.subMenu or false,
-            description = button.txt or ' ',
+            description = description,
             event = event,
             serverEvent = serverEvent,
             args = button.params?.args or nil,

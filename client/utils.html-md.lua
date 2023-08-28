@@ -1,0 +1,34 @@
+local html = {
+    -- start tags
+    ['<h1>'] = '#',
+    ['<h2>'] = '##',
+    ['<h3>'] = '###',
+    ['<h4>'] = '####',
+    ['<h5>'] = '#####',
+    ['<h6>'] = '######',
+    ['<b>'] = '**',
+    ['<bold>'] = '**',
+    ['<strong>'] = '**',
+    ['<i>'] = '*',
+    -- end tags
+    ['</h1>'] = '',
+    ['</h2>'] = '',
+    ['</h3>'] = '',
+    ['</h4>'] = '',
+    ['</h5>'] = '',
+    ['</h6>'] = '',
+    ['</b>'] = '**',
+    ['</bold>'] = '**',
+    ['</strong>'] = '**',
+    ['</i>'] = '*',
+    ['<br>'] = ' \n',
+}
+
+function convertText(string)
+    if string == '' then return false end
+    if not string then return false end
+    for k, v in pairs(html) do
+        string = string.gsub(string, k, v)
+    end
+    return string
+end
