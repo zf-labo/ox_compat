@@ -1,7 +1,8 @@
--- ### QB-INPUT COMPAT ### --
-local QBCore = exports['qb-core']:GetCoreObject()
+-- ### QB-INPUT TO OX_LIB COMPAT ### --
+if not Config.Modules['qb-input'].enabled then return end
+if GetResourceState(Config.Modules['qb-input'].resource_name) == 'started' then return end
 local function exportHandler(exportName, func)
-    AddEventHandler(('__cfx_export_qb-input_%s'):format(exportName), function(setCB)
+    AddEventHandler(('__cfx_export_%s_%s'):format(Config.Modules['qb-input'].resource_name, exportName), function(setCB)
         setCB(func)
     end)
 end
@@ -26,7 +27,7 @@ local function convert(data)
             label = convertText(input.text),
             required = input.required,
             default = convertText(input.default),
-            password = input.type == 'password',
+            password = input.type == 'password' or false,
         }
         ids[#ids+1] = input.name
     end
