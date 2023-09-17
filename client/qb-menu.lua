@@ -1,6 +1,5 @@
 -- ### QB-INPUT TO OX_LIB COMPAT ### --
 if not Config.Modules['qb-menu'].active then return end
-if GetResourceState(Config.Modules['qb-menu'].resource_name) == 'started' then return end
 local function exportHandler(exportName, func)
     AddEventHandler(('__cfx_export_%s_%s'):format(Config.Modules['qb-menu'].resource_name, exportName), function(setCB)
         setCB(func)

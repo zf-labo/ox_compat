@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'ZF Labo'
 description 'QB Interfaces Compatibility for OverExtended\'s Resources' 
-version '1.2.2'
+version '1.2.3'
 
 client_script 'client/*.lua'
 server_script 'versioncheck.lua'
