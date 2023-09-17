@@ -15,7 +15,7 @@ local function convert(menu)
     for _,button in pairs(menu) do
         local isServer, event, serverEvent, icon = button.params?.isServer or false, nil, nil, nil
         if isServer then serverEvent = button.params?.event or '' else event = button.params?.event or '' end
-        if QBCore.Shared.Items[button.icon] then icon = "qb-inventory/html/images/" .. QBCore.Shared.Items[tostring(button.icon)].image else icon = button.icon end
+        if QBCore.Shared.Items[button.icon] then icon = "nui://qb-inventory/html/images/" .. QBCore.Shared.Items[tostring(button.icon)].image else icon = button.icon or nil end
 
         local title, description = nil, nil
         if convertText(button.header) then title = convertText(button.header) description = convertText(button.txt) end
