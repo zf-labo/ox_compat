@@ -3,8 +3,8 @@ game 'gta5'
 lua54 'yes'
 
 author 'ZF Labo'
-description 'QB Menu & Inputs Converter for OX_LIB'
-version '1.0.0'
+description 'QB Interfaces Compatibility for OverExtended\'s Resources' 
+version '1.2.2'
 
 client_script 'client/*.lua'
 server_script 'versioncheck.lua'

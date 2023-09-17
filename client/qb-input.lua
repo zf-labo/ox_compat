@@ -1,5 +1,5 @@
 -- ### QB-INPUT TO OX_LIB COMPAT ### --
-if not Config.Modules['qb-input'].enabled then return end
+if not Config.Modules['qb-input'].active then return end
 if GetResourceState(Config.Modules['qb-input'].resource_name) == 'started' then return end
 local function exportHandler(exportName, func)
     AddEventHandler(('__cfx_export_%s_%s'):format(Config.Modules['qb-input'].resource_name, exportName), function(setCB)
