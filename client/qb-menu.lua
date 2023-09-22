@@ -1,4 +1,4 @@
--- ### QB-INPUT TO OX_LIB COMPAT ### --
+-- ### QB-MENU TO OX_LIB COMPAT ### --
 if not Config.Modules['qb-menu'].active then return end
 local function exportHandler(exportName, func)
     AddEventHandler(('__cfx_export_%s_%s'):format(Config.Modules['qb-menu'].resource_name, exportName), function(setCB)
@@ -8,17 +8,17 @@ end
 
 local function convert(menu)
     local new_context = {}
-    new_context.id = menu.id or 'convert_'..math.random(1, 10000)
-    new_context.title = convertText(menu.title) or 'Options'
-    
+    new_context.id = menu.id or ('convert_'..math.random(1, 10000))
+    new_context.title = ConvertText(menu.title) or 'Options'
+
     local options = {}
     for _,button in pairs(menu) do
         local isServer, event, serverEvent, icon, title, description = button.params?.isServer or false, nil, nil, nil, nil, nil
         if isServer then serverEvent = button.params?.event or '' else event = button.params?.event or '' end
         if QBCore.Shared.Items[button.icon] then icon = ("nui://%s/html/images/%s"):format(Config.InventoryName, QBCore.Shared.Items[tostring(button.icon)].image) else icon = button.icon or nil end
-        if convertText(button.header) then title = convertText(button.header) description = convertText(button.txt) end
-        if not convertText(button.header) and convertText(button.txt) then title = convertText(button.txt) description = nil end
-        if not convertText(button.header) and not convertText(button.txt) then title = ' ' description = nil end
+        if ConvertText(button.header) then title = ConvertText(button.header) description = ConvertText(button.txt) end
+        if not ConvertText(button.header) and ConvertText(button.txt) then title = ConvertText(button.txt) description = nil end
+        if not ConvertText(button.header) and not ConvertText(button.txt) then title = ' ' description = nil end
 
         options[#options+1] = {
             title = title,
@@ -56,4 +56,3 @@ end)
 RegisterNetEvent('qb-menu:client:closeMenu', function()
     lib.hideContext()
 end)
-

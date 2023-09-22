@@ -1,3 +1,4 @@
+-- ### HTML TEXT CONVERTION ### --
 local html = {
     -- start tags
     ['<h1>'] = '#',
@@ -24,7 +25,7 @@ local html = {
     ['<br>'] = '',
 }
 
-function convertText(string)
+function ConvertText(string)
     if string == '' then return false end
     if not string then return false end
 
