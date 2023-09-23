@@ -445,9 +445,15 @@ local function SpawnPed(data)
 
 				if v.target then
 					if v.target.useModel then
-                        target:addModel(data.model, convert(data.target.options))
+                        target:addModel(data.model, convert({
+                            options = data.target.options,
+                            distance = data.target.distance
+                        }))
                     else
-                        target:addLocalEntity(spawnedped, convert(data.target.options))
+                        target:addLocalEntity(spawnedped, convert({
+                            options = data.target.options,
+                            distance = data.target.distance
+                        }))
 					end
 				end
 
@@ -536,9 +542,15 @@ local function SpawnPed(data)
 
 			if data.target then
 				if data.target.useModel then
-                    target:addModel(data.model, convert(data.target.options))
+                    target:addModel(data.model, convert({
+                        options = data.target.options,
+                        distance = data.target.distance
+                    }))
 				else
-                    target:addLocalEntity(spawnedped, convert(data.target.options))
+                    target:addLocalEntity(spawnedped, convert({
+                        options = data.target.options,
+                        distance = data.target.distance
+                    }))
 				end
 			end
 
