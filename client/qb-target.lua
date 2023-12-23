@@ -687,6 +687,12 @@ function DeletePeds(res)
 end
 
 
+---@param labels string | table
+exportHandler('GetPeds', function()
+    return Peds
+end)
+
+
 AddEventHandler('onResourceStart', function(resource)
 	if resource ~= GetCurrentResourceName() then return end
 	SpawnPeds()
