@@ -19,6 +19,7 @@ local function convert(menu)
         if ConvertText(button.header) then title = ConvertText(button.header) description = ConvertText(button.txt) end
         if not ConvertText(button.header) and ConvertText(button.txt) then title = ConvertText(button.txt) description = nil end
         if not ConvertText(button.header) and not ConvertText(button.txt) then title = ' ' description = nil end
+        if button.params?.isAction then button.action = button.params?.event end
 
         options[#options+1] = {
             title = title,
