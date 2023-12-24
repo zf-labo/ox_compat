@@ -13,18 +13,19 @@ local function convert(menu)
 
     local options = {}
     for _,button in pairs(menu) do
-        local isServer, event, serverEvent, icon, title, description = button.params?.isServer or false, nil, nil, nil, nil, nil
+        local isServer, event, serverEvent, icon, title, description, action = button.params?.isServer or false, nil, nil, nil, nil, nil, nil
         if isServer then serverEvent = button.params?.event or '' else event = button.params?.event or '' end
         if QBCore.Shared.Items[button.icon] then icon = ("nui://%s/html/images/%s"):format(Config.InventoryName, QBCore.Shared.Items[tostring(button.icon)].image) else icon = button.icon or nil end
         if ConvertText(button.header) then title = ConvertText(button.header) description = ConvertText(button.txt) end
         if not ConvertText(button.header) and ConvertText(button.txt) then title = ConvertText(button.txt) description = nil end
         if not ConvertText(button.header) and not ConvertText(button.txt) then title = ' ' description = nil end
-        if button.params?.isAction and type(button.params?.event) ~= 'string' then button.action = button.params?.event end
+        if button.params?.isAction and type(button.params?.event) ~= 'string' then action = button.params?.event end
+        if button.params?.action then action = button.params?.action end
 
         options[#options+1] = {
             title = title,
             disabled = button.isMenuHeader or false,
-            onSelect = button.action or nil,
+            onSelect = action or nil,
             icon = icon,
             arrow = button.subMenu or false,
             description = description,
